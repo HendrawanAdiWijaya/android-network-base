@@ -48,7 +48,7 @@ public abstract class NetworkBoundResource<T, N> {
                         if (response.body().data!=null){
                             saveCallResult(networkMapper(response.body().data));
                         }
-                        setValue(Resource.success(networkMapper(response.body().data), response.body().code));
+                        setValue(Resource.success(response.body().data!=null?networkMapper(response.body().data):null, response.body().code));
                     } else {
                         setValue(Resource.<T>serverError(null));
                     }
